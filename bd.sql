@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 17, 2020 at 09:25 AM
+-- Generation Time: Jul 17, 2020 at 09:34 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -26,6 +26,13 @@ CREATE TABLE `commande` (
   `utilisateur_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `commande`
+--
+
+INSERT INTO `commande` (`id`, `date`, `utilisateur_id`) VALUES
+(1, '2020-07-15 11:29:29', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -36,6 +43,13 @@ CREATE TABLE `plat` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `plat`
+--
+
+INSERT INTO `plat` (`id`, `nom`) VALUES
+(1, 'Burger');
 
 -- --------------------------------------------------------
 
@@ -48,6 +62,13 @@ CREATE TABLE `plat_commande` (
   `commande_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `plat_commande`
+--
+
+INSERT INTO `plat_commande` (`plat_id`, `commande_id`) VALUES
+(1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -59,6 +80,13 @@ CREATE TABLE `utilisateur` (
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `nom`, `prenom`) VALUES
+(1, 'Doe', 'John');
 
 --
 -- Indexes for dumped tables
@@ -81,8 +109,8 @@ ALTER TABLE `plat`
 -- Indexes for table `plat_commande`
 --
 ALTER TABLE `plat_commande`
-  ADD KEY `commande_id` (`commande_id`),
-  ADD KEY `plat_id` (`plat_id`);
+  ADD PRIMARY KEY (`plat_id`,`commande_id`),
+  ADD KEY `commande_id` (`commande_id`);
 
 --
 -- Indexes for table `utilisateur`
@@ -98,19 +126,19 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT for table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `plat`
 --
 ALTER TABLE `plat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
